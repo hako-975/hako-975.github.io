@@ -212,25 +212,23 @@
 
         <div class="row justify-content-center">
           <div class="col-lg-6 px-5">
-            <form>
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nama" required oninvalid="this.setCustomValidity('Masukkan nama Anda')" oninput="this.setCustomValidity('')" placeholder="Nama">
-                <label for="nama"><i class="fas fa-fw fa-user"></i> Nama</label>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="nama" required oninvalid="this.setCustomValidity('Masukkan nama Anda')" oninput="this.setCustomValidity('')" placeholder="Nama">
+              <label for="nama"><i class="fas fa-fw fa-user"></i> Nama</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="alamat" required oninvalid="this.setCustomValidity('Masukkan alamat Anda')" oninput="this.setCustomValidity('')" placeholder="Alamat">
+              <label for="alamat"><i class="fas fa-fw fa-map-marked-alt"></i> Alamat</label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea class="form-control" required oninvalid="this.setCustomValidity('Masukkan Pesan Anda')" oninput="this.setCustomValidity('')" placeholder="Pesan" id="pesan" style="height: 200px"></textarea>
+              <label for="pesan"><i class="fas fa-fw fa-envelope"></i> Pesan</label>
+            </div>
+            <div class="row">
+              <div class="col text-end">
+                <button class="btn btn-primary" onclick="inputPesan()"><i class="fas fa-fw fa-paper-plane"></i> Kirim</button>
               </div>
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="alamat" required oninvalid="this.setCustomValidity('Masukkan alamat Anda')" oninput="this.setCustomValidity('')" placeholder="Alamat">
-                <label for="alamat"><i class="fas fa-fw fa-map-marked-alt"></i> Alamat</label>
-              </div>
-              <div class="form-floating mb-3">
-                <textarea class="form-control" required oninvalid="this.setCustomValidity('Masukkan Pesan Anda')" oninput="this.setCustomValidity('')" placeholder="Pesan" id="pesan" style="height: 200px"></textarea>
-                <label for="pesan"><i class="fas fa-fw fa-envelope"></i> Pesan</label>
-              </div>
-              <div class="row">
-                <div class="col text-end">
-                  <button type="submit" class="btn btn-primary"><i class="fas fa-fw fa-paper-plane"></i> Kirim</button>
-                </div>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
 
@@ -324,7 +322,7 @@
 
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-      import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+      import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -343,12 +341,13 @@
       const app = initializeApp(firebaseConfig);
       const database = getDatabase(app);
 
-      // Read Data------------------------------------------------------------------
+      // Read Data ------------------------------------------------------------------
       const pesanRef = ref(database, 'pesan');
       const listPesan = document.getElementById("list_pesan");
       onValue(pesanRef, (snapshot) => {
         const data = snapshot.val();
-        for (var i = 0; i < data.length; i++) {
+        var dataLength = data.length;
+        for (var i = 0; i < dataLength; i++) {
           listPesan.innerHTML += `
           <div class="row py-5 my-5 justify-content-center" data-aos="fade-right" data-aos-delay="100">
             <div class="col-lg-6 text-center">
@@ -360,6 +359,22 @@
         }
       });
 
+
+      // Add Data ------------------------------------------------------------------
+      window.inputPesan = function inputPesan() {
+        var pesanId = +new Date();
+        var nama = document.getElementById('nama').value;
+        var alamat = document.getElementById('alamat').value;
+        var pesan = document.getElementById('pesan').value;
+        console.log('terkirim');
+        set(ref(database, 'pesan/' + pesanId), {
+          nama: nama,
+          alamat: alamat,
+          pesan : pesan
+        });
+      }
+
+      //inputPesan(+new Date(), 'Andro', 'Pocis', 'selamat menikah');
       
     </script>
 
