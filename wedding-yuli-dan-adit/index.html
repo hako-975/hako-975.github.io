@@ -320,44 +320,61 @@
 
     <script type="module">
 
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-      import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+		import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
 
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyACnl8EFa5-nDt_8gLYndzMrHeIXr6FFD8",
-        authDomain: "wedding-yuli-dan-adit.firebaseapp.com",
-        databaseURL: "https://wedding-yuli-dan-adit-default-rtdb.asia-southeast1.firebasedatabase.app/",
-        projectId: "wedding-yuli-dan-adit",
-        storageBucket: "wedding-yuli-dan-adit.appspot.com",
-        messagingSenderId: "294614883995",
-        appId: "1:294614883995:web:4ca93e20b4d2cfaa46703e"
-      };
+		// Your web app's Firebase configuration
+		const firebaseConfig = {
+			apiKey: "AIzaSyACnl8EFa5-nDt_8gLYndzMrHeIXr6FFD8",
+			authDomain: "wedding-yuli-dan-adit.firebaseapp.com",
+			databaseURL: "https://wedding-yuli-dan-adit-default-rtdb.asia-southeast1.firebasedatabase.app/",
+			projectId: "wedding-yuli-dan-adit",
+			storageBucket: "wedding-yuli-dan-adit.appspot.com",
+			messagingSenderId: "294614883995",
+			appId: "1:294614883995:web:4ca93e20b4d2cfaa46703e"
+		};
 
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const database = getDatabase(app);
+		// Initialize Firebase
+		const app = initializeApp(firebaseConfig);
+		const database = getDatabase(app);
 
-      // Read Data ------------------------------------------------------------------
-      const pesanRef = ref(database, 'pesan');
-      const listPesan = document.getElementById("list_pesan");
-      onValue(pesanRef, (snapshot) => {
-        const data = snapshot.val();
-        var dataLength = data.length;
-        for (var i = 0; i < dataLength; i++) {
-          listPesan.innerHTML += `
-          <div class="row py-5 my-5 justify-content-center" data-aos="fade-right" data-aos-delay="100">
-            <div class="col-lg-6 text-center">
-              <h5>${data[i].nama}, di <span style="color: #106eea">${data[i].alamat}</span></h5>
-              <p class="fst-italic fs-3">"${data[i].pesan}"</p>
-            </div>
-          </div>
-          `;
-        }
-      });
+		// Read Data ------------------------------------------------------------------
+		const pesanRef = ref(database, 'pesan');
+		const listPesan = document.getElementById("list_pesan");
+      // onValue(pesanRef, (snapshot) => {
+      //   const data = snapshot.val();
+      //   var dataLength = data.length;
+      //   for (var i = 0; i < dataLength; i++) {
+      //     listPesan.innerHTML += `
+      //     <div class="row py-5 my-5 justify-content-center" data-aos="fade-right" data-aos-delay="100">
+      //       <div class="col-lg-6 text-center">
+      //         <h5>${data[i].nama}, di <span style="color: #106eea">${data[i].alamat}</span></h5>
+      //         <p class="fst-italic fs-3">"${data[i].pesan}"</p>
+      //       </div>
+      //     </div>
+      //     `;
+      //   }
+      // });
+
+		onValue(pesanRef, (snapshot) => 
+		{
+			listPesan.innerHTML = '';
+			snapshot.forEach((childSnapshot) =>
+			{
+				var childData = childSnapshot.val();
+				listPesan.innerHTML += `
+					<div class="row py-5 my-5 justify-content-center" data-aos="fade-right" data-aos-delay="100">
+						<div class="col-lg-6 text-center">
+							<h5>${childData.nama}, di <span style="color: #106eea">${childData.alamat}</span></h5>
+							<p class="fst-italic fs-3">"${childData.pesan}"</p>
+						</div>
+					</div>
+				`;
+			});
+		});
 
 
       // Add Data ------------------------------------------------------------------
@@ -366,7 +383,7 @@
         var nama = document.getElementById('nama').value;
         var alamat = document.getElementById('alamat').value;
         var pesan = document.getElementById('pesan').value;
-        console.log('terkirim');
+        alert("Pesan Terkirim! Terima Kasih sudah memberikan do'a yang terbaik Anda untuk rumah tangga kami.");
         set(ref(database, 'pesan/' + pesanId), {
           nama: nama,
           alamat: alamat,
