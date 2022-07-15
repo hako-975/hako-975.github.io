@@ -1,0 +1,507 @@
+<?php 
+  if (isset($_POST['btnKirimPesan'])) 
+  {
+    $to = "andrifirmansaputra1@gmail.com";
+    $nama = htmlspecialchars($_POST['nama']);
+    $email = htmlspecialchars($_POST['email']);
+    $pesan = htmlspecialchars($_POST['pesan']);
+    mail($to, $nama, $email.'-'.$pesan);
+    echo "
+    <script>
+      alert('Terima Kasih atas tanggapan Anda!');
+    </script>
+    ";
+  }
+ ?>
+ 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Portfolio - Andri Firman Saputra</title>
+  <meta content="Portfolio - Andri Firman Saputra" name="description">
+  <meta content="Portfolio Andri Firman Saputra" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: BizLand - v3.7.0
+  * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope d-flex align-items-center"><a target="_blank" href="mailto:andrifirmansaputra1@gmail.com">andrifirmansaputra1@gmail.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><a href="http://wa.me/6287808675313" target="_blank" target="_blank">+62 878 0867 5313</a></i>
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
+        <a href="https://twitter.com/HausCoding" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="https://www.facebook.com/hako975/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/andri_firman_975/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/andri-firman-saputra-9b66901b1/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">Andri Firman Saputra</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
+          <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
+          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container" data-aos="zoom-out" data-aos-delay="100">
+      <h1>Selamat Datang!</h1>
+      <h2>Portfolio Andri Firman Saputra</h2>
+      <div class="d-flex">
+        <a href="#about" class="btn-get-started scrollto">Mulai!</a>
+        <a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank" class="btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="#featured-services">Rapih</a></h4>
+              <p class="description">Saya orang yang mengikuti aturan penulisan dan rapih dalam mengelola dokumen.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="#featured-services">Cepat Tanggap</a></h4>
+              <p class="description">Saya orang yang cepat tanggap dalam menangani masalah secara kepala dingin dan detail.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="#featured-services">Dinamis</a></h4>
+              <p class="description">Saya orang yang dinamis terutama dalam hal perkembangan zaman dan teknologi.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Featured Services Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Tentang</h2>
+          <h3>Cari Tahu Lebih <span>Tentang Saya</span></h3>
+          <p>Saya seorang mahasiswa yang mendalami dunia pemrograman, terutama dalam dunia <i>Game Development</i>.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 offset-lg-1" data-aos="fade-right" data-aos-delay="100">
+            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <h3>Game Developer</h3>
+            <p class="fst-italic">
+              Saya membuat permainan Android
+            </p>
+            <div class="row">
+              <div class="col">
+                <ul>
+                  <li>
+                    <i class="bx bx-store-alt"></i>
+                    <div>
+                      <h5>Play Store</h5>
+                      <p><a href="https://play.google.com/store/apps/dev?id=5605126651131495302" target="_blank">Kunjungi</a></p>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bx bi-facebook"></i>
+                    <div>
+                      <h5>Facebook</h5>
+                      <p><a href="https://www.facebook.com/hako975" target="_blank">Kunjungi</a></p>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bx bi-instagram"></i>
+                    <div>
+                      <h5>Instagram</h5>
+                      <p><a href="https://www.instagram.com/andri_firman_975" target="_blank">Kunjungi</a></p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="col">
+                <ul>
+                  <li>
+                    <i class="bx bi-linkedin"></i>
+                    <div>
+                      <h5>LinkedIn</h5>
+                      <p><a href="https://www.linkedin.com/in/andri-firman-saputra-9b66901b1/" target="_blank">Kunjungi</a></p>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bx bi-twitter"></i>
+                    <div>
+                      <h5>Twitter</h5>
+                      <p><a href="https://twitter.com/HausCoding" target="_blank">Kunjungi</a></p>
+                    </div>
+                  </li>
+                  <li>
+                    <i class="bx bi-youtube"></i>
+                    <div>
+                      <h5>YouTube</h5>
+                      <p><a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank">Kunjungi</a></p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row skills-content">
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill">HTML <i class="val">100%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">CSS <i class="val">60%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">JavaScript <i class="val">40%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill">PHP <i class="val">65%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">C# <i class="val">65%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Photoshop <i class="val">55%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Skills Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              <i class="bi bi-emoji-smile"></i>
+              <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Klien Senang</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="bi bi-journal-richtext"></i>
+              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Proyek</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row justify-content-center">
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <h3>Cek <span>Portfolio Saya</span></h3>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="assets/img/portfolio/petualanganyumiko.png" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Petualangan Yumiko</h4>
+              <p>App</p>
+              <a href="assets/img/portfolio/petualanganyumiko.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Petualangan Yumiko"><i class="bx bx-plus"></i></a>
+              <a href="https://play.google.com/store/apps/details?id=com.HakoLab.YumikoAdventure3D" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="assets/img/portfolio/weddingyuliadit.jpeg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Undangan Digital Yuli dan Adit</h4>
+              <p>Web</p>
+              <a href="assets/img/portfolio/weddingyuliadit.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Wedding Yuli dan Adit"><i class="bx bx-plus"></i></a>
+              <a href="https://hako-975.github.io/wedding-yuli-dan-adit/" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Kontak</h2>
+          <h3><span>Kontak Saya</span></h3>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Alamat Saya</h3>
+              <p>Jl. AMD Babakan Pocis No. 100 RT04/02, Bakti Jaya, Setu, Tangerang Selatan, Banten, Jawa Barat, Indonesia. Kode Pos: 15315</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:andrifirmansaputra1@gmail.com" target="_blank">andrifirmansaputra1@gmail.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>WhatsApp</h3>
+              <p><a href="http://wa.me/6287808675313" target="_blank" target="_blank">+62 878 0867 5313</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-6 ">
+            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7930.636543974224!2d106.7021518!3d-6.352826999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5984644c4c7%3A0xe8408c0143713c8d!2zNsKwMjEnMTAuMSJTIDEwNsKwNDInMDcuMCJF!5e0!3m2!1sid!2sid!4v1642155213855!5m2!1sid!2sid" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+          </div>
+
+          <div class="col-lg-6">
+            <form method="post">
+              <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email">
+              </div>
+              <div class="mb-3">
+                <label for="pesan" class="form-label">Isi Pesan</label>
+                <textarea class="form-control" name="pesan" id="pesan" rows="3" placeholder="Masukkan Isi Pesan"></textarea>
+              </div>
+              <div class="mb-3">
+                <button type="submit" name="btnKirimPesan" class="btn btn-primary">Kirim Pesan!</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row justify-content-between">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Andri Firman Saputra</h3>
+            <p>
+              Jl. AMD Babakan Pocis No. 100 RT04/02, Bakti Jaya, Setu, Tangerang Selatan, Banten, Jawa Barat, Indonesia. <br>
+              Kode Pos: 15315 <br> 
+              <strong>WhatsApp:</strong> <a href="http://wa.me/6287808675313" target="_blank" target="_blank">+62 878 0867 5313</a><br>
+              <strong>Email:</strong> <a href="mailto:andrifirmansaputra1@gmail.com" target="_blank">andrifirmansaputra1@gmail.com</a><br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Sosial Media</h4>
+            <div class="social-links mt-3">
+              <a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
+              <a href="https://twitter.com/HausCoding" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="https://www.facebook.com/hako975/" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="https://www.instagram.com/andri_firman_975/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/andri-firman-saputra-9b66901b1/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Andri Firman Saputra</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
