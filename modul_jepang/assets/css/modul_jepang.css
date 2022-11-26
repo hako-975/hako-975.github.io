@@ -1,0 +1,285 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Font */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.icon-lg {
+  font-size: 18px; 
+}
+
+.icon-xl {
+  font-size: 30px; 
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.bg-color-nav {
+  background-color: transparent;
+  opacity: 1;
+}
+
+@media(max-width: 1000px) {
+  .bg-color-nav {
+    background-color: #DC3545;
+    opacity: 1;
+  }
+  .carousel {
+    padding-top: 60px;
+  }
+}
+
+
+/* Section */
+section .hr-divider {
+  opacity: 1;
+  width: 50%;
+  border-top: 5px solid #DC3545;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+/* Navbar */
+#navbar {
+  transition: 0.3s;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+#navbar .navbar-nav a {
+  position: relative;
+  font-size: 16px;
+}
+
+#navbar .navbar-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  height: 3px;
+  width: 0%;
+  transition: all .3s;
+}
+
+#navbar .navbar-nav a:hover::after {
+  width: 100%;
+}
+
+/* Footer */
+#footer {
+  margin-top: 50px;
+}
+
+#footer li i {
+  display: table-cell;
+  position: relative;
+  vertical-align: top;
+}
+
+#footer li span {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+#footer .social-links a {
+  display: inline-block;
+  background: #dc3545;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 4px;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+#footer .social-links a:hover {
+  background: #bb2d3b;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Back to Top */
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 999;
+  background: #b02a37;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+  text-align: center;
+}
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+}
+.back-to-top:hover {
+  background: #900815;
+  color: #fff;
+}
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #fff;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #feadbc;
+  border-top-color: #e2eefd;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*Timeline*/
+.circle {
+  padding: 0 15px;
+  border-radius: 30%;
+  font-size: 2rem;
+  background-color: #DC3545;
+  color: #fff;
+  max-height: 50px;
+  z-index: 2;
+}
+
+
+.timeline div {
+  padding: 0;
+  height: 40px;
+}
+
+.timeline hr {
+  opacity: 1;
+  border-top: 3px solid #DC3545;
+  margin: 0;
+  top: 17px;
+  position: relative;
+}
+
+.timeline .col-2 {
+  display: flex;
+  overflow: hidden;
+}
+.timeline .corner {
+  border: 3px solid #DC3545;
+  width: 100%;
+  position: relative;
+  border-radius: 15px;
+}
+.timeline .top-right {
+  left: 50%;
+  top: -50%;
+}
+.timeline .left-bottom {
+  left: -50%;
+  top: calc(50% - 3px);
+}
+.timeline .top-left {
+  left: -50%;
+  top: -50%;
+}
+.timeline .right-bottom {
+  left: 50%;
+  top: calc(50% - 3px);
+}
+
+.connecting-line-right {
+  border-right: 3px solid #DC3545;
+  margin-right: -8.35%;
+  padding-right: 10%;
+}
+
+.connecting-line-left {
+  border-left: 3px solid #DC3545;
+  margin-left: -8.3%;
+  padding-left: 10%;
+}
+
+/*scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #DBA4A9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #DC3545;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #89363d;
+}
+
+/* btn latihan */
+.btn-latihan {
+  --bs-btn-padding-y: 1rem;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-font-size: 2.5rem;
+  --bs-btn-border-radius: 1rem;
+}
+
+/*quiz*/
+.img-div > img {
+  width: 15rem;
+  height: 15rem;
+}
