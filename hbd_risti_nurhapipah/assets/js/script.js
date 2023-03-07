@@ -20,11 +20,11 @@ function mulai() {
   setTimeout(function() {
     mail_section.css('opacity', 0);
     $('body').removeClass('overflow-hidden');
-  }, 1200);
+  }, 2000);
   setTimeout(function() {
     mail_section.removeClass('d-flex');
     mail_section.addClass('d-none');
-  }, 2000);
+  }, 4000);
 }
 
 function wa(isi) {
