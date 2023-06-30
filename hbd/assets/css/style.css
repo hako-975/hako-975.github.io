@@ -1,0 +1,80 @@
+* {
+	font-family: 'Poppins', sans-serif;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html, body {
+	height: 100%;
+} 
+
+.open {
+	background: #ffafbd;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	z-index: 1;
+	overflow-y: hidden;
+	transition: 0.5s all ease;
+}
+
+.mail {
+	margin-top: -75px!important;
+	width: 300px;
+}
+
+.card {
+	border-radius: 15px;
+	box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+}
+
+.confetti {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+h4 {
+	padding: 0;
+	margin: 0;
+}
+
+.bg-make-a-wish {
+	display: block;
+	text-align: center;
+	color: white;
+	background: #2fe965;
+	font-weight: bold;
+	font-size: 2rem;
+	padding: 50px 30px;
+	margin: 40px 0;
+	border-radius: 20px;
+	box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
+}
+
+.makeawish {
+	display: block;
+	background-size: cover;
+	width: 100%;
+	margin: auto;
+	padding: 20px;
+	border-radius: 50%;
+}
+
+@media(min-width: 768px) {
+	.makeawish {
+		width: 50%;
+	}
+}
+
+#content-section {
+	overflow-x: hidden;
+}
