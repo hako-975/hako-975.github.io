@@ -24,8 +24,8 @@ html, body
 .open
 {
     background: #C9FFBF;
-    background: -webkit-linear-gradient(to top, #FFAFBD, #C9FFBF);
-    background: linear-gradient(to top, #FFAFBD, #C9FFBF);
+    background: -webkit-linear-gradient(to top, #C1E1DC, #F3BBBA);
+    background: linear-gradient(to top, #C1E1DC, #F3BBBA);
     height: 100%;
     width: 100%;
     position: fixed;
