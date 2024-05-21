@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubungan</title>
+    <!-- Link ke Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Gaya tambahan -->
+    <style>
+        body {
+            /* Untuk gambar latar belakang */
+            background-image: url('https://via.placeholder.com/1920x1080'); /* Ganti URL dengan URL gambar yang Anda inginkan */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* Tinggi minimum untuk konten */
+            min-height: 100vh;
+            /* Tata letak untuk konten */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.8); /* Warna latar belakang konten */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 content">
+                <div id="output"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link ke Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Script JavaScript -->
+    <script>
+        let hubungan = false;
+        const goal = 100;
+
+        let count = 0;
+        let i = 0;
+
+        while (i < goal && i > -goal) {
+            i -= Math.floor(Math.random() * 11);
+            i += Math.floor(Math.random() * 11);
+            count++;
+        }
+        if (i <= -goal) {
+            hubungan = false;
+        }
+        if (i >= goal) {
+            hubungan = true;
+        }
+
+        document.getElementById("output").innerHTML = "<h1 class='text-center'>Jumlah percobaan: " + count + "</h1>";
+
+        if (hubungan == true) {
+            document.getElementById("output").innerHTML += "<h2 class='text-center mt-3'>Hubungan: jadian</h2>";
+        }
+
+        if (hubungan == false) {
+            document.getElementById("output").innerHTML += "<h2 class='text-center mt-3'>Hubungan: kandas</h2>";
+        }
+    </script>
+</body>
+</html>
