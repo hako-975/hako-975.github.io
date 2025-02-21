@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Hilda Febrianti!</title>
+    <title>Happy Birthday yang ke-23 untuk Hilda Febrianti!</title>
     <link rel="icon" href="foto.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,11 +16,11 @@
             margin: 0;
             background: white;
             transition: background 2s ease-in-out;
+            overflow-y: scroll;
         }
         .background {
             position: fixed;
             width: 100vw;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -67,9 +67,8 @@
             100% { transform: scale(2); opacity: 0; }
         }
         .content {
-            position: fixed;
+            position: absolute;
             width: 100%;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -182,7 +181,7 @@
             font-family: 'Sacramento', cursive;
         }
         #content-section {
-            overflow-x: hidden;
+            height: auto;
         }
         .typing {
             display: inline-block;
@@ -197,9 +196,26 @@
             width: 100%;
             height: 100%;
         }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #fcdbe9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f14e95;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d84686;
+        }
+
     </style>
 </head>
-<body class="overflow-hidden">
+<body>
     <!-- music -->
     <audio src="audio/birthday.mp3" loop class="music"></audio>
     <!-- sfx door -->
