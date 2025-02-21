@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Hilda Febrianti!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Poppins", serif;
+        }
+        body {
+            margin: 0;
+            background: white;
+            transition: background 2s ease-in-out;
+        }
+        .background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .flower {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bloom 10s infinite linear;
+            opacity: 0;
+        }
+        .petal {
+            position: absolute;
+            width: 25px;
+            height: 50px;
+            background: pink;
+            border-radius: 50%;
+        }
+        .petal:nth-child(1) { transform: rotate(0deg) translateY(-15px); }
+        .petal:nth-child(2) { transform: rotate(45deg) translateY(-15px); }
+        .petal:nth-child(3) { transform: rotate(90deg) translateY(-15px); }
+        .petal:nth-child(4) { transform: rotate(135deg) translateY(-15px); }
+        .petal:nth-child(5) { transform: rotate(180deg) translateY(-15px); }
+        .petal:nth-child(6) { transform: rotate(225deg) translateY(-15px); }
+        .petal:nth-child(7) { transform: rotate(270deg) translateY(-15px); }
+        .petal:nth-child(8) { transform: rotate(315deg) translateY(-15px); }
+        .pistil {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: yellow;
+            border-radius: 50%;
+        }
+        @keyframes bloom {
+            0% { transform: scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .content {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 3s;
+        }
+        .content img {
+            height: 300px;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+        }
+        .text-shadow {
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        body.transition {
+            animation: fadeInAnimation ease 2s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .open {
+            background-color: var(--white);
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            z-index: 3;
+            transition: transform 1s ease-in-out;
+        }
+
+        .doors {
+            width: 400px;
+            height: 290px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .door {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            transform-origin: center left;
+            transition: transform 1s, filter 0.5s;
+        }
+
+        .door img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .door.left {
+            left: 22px;
+        }
+
+        .door.right {
+            right: 22px;
+            transform-origin: center right;
+        }
+
+        .heading-door {
+            position: absolute;
+            text-align: center;
+            width: 50%;
+            font-size: 54px;
+            margin: auto;
+        }
+
+        .heading-door.left {
+            left: 0;
+        }
+
+        .heading-door.right {
+            right: 0;
+        }
+
+        .huruf-sambung {
+            font-family: 'Sacramento', cursive;
+        }
+        #content-section {
+            overflow-x: hidden;
+        }
+        .typing {
+            display: inline-block;
+            border-right: 3px solid #ff4081;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+    </style>
+</head>
+<body class="overflow-hidden">
+    <!-- music -->
+    <audio src="audio/birthday.mp3" loop class="music"></audio>
+    <!-- sfx door -->
+    <audio src="audio/door.mp3" class="sound-door"></audio>
+
+    <!-- door section -->
+    <div id="door-section" class="open" onclick="mulai()">
+      <div class="doors">
+        <div class="door left">
+          <img src="img/door-left.png" alt="left door">
+        </div>
+        <div class="door right">
+          <img src="img/door-right.png" alt="right door">
+        </div>
+      </div>
+    </div>
+    <div id="content-section">
+        <div class="background"></div>
+        <div class="content" id="birthdayContent">
+            <img src="foto.png" alt="Birthday Person">
+            <h2 class="text-shadow">Happy Birthday yang ke-23! <br> Hilda Febrianti!</h2>
+            <h2 id="typing-text" class="text-shadow" style="padding-left: 50px;padding-right: 50px"></h2>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        const text = "🌸 Semoga kamu sehat dan bahagia selalu! 🌸 <br><br> Tetap semangat ya! Karena aku yakin ada banyak hal luar biasa yang menantimu. Semoga Allah memberi rezeki yang banyak dan berkah buat kamu. Aku yakin di setiap usaha yang kamu lakuin pasti bakal ada hasilnya 😊 <br><br> Dan... khusus buat kamu yang spesial di hari ini, semoga hari ini penuh dengan kebahagiaan dan keinginan kamu tercapai. Aamiin! Tetaplah bersinar seperti biasanya ya 😉✨";
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typing-text").innerHTML = text.substring(0, i + 1) + '<span class="typing"></span>';
+                i++;
+                setTimeout(typeWriter, 100); // Kecepatan efek mengetik
+            } else {
+                document.querySelector(".typing").style.display = "none"; // Hilangkan kursor setelah selesai mengetik
+            }
+        }
+
+        window.onload = typeWriter;
+        $('#content-section').hide();
+        // music
+        var tempMusic = ''
+        music = document.querySelector('.music')
+        if (tempMusic) {
+            music.src = tempMusic
+        }
+
+        // door mulai
+        function mulai() {
+            // back to top
+            window.scrollTo(0, 0)
+
+            // sound door
+            var soundDoor = document.querySelector('.sound-door')
+            soundDoor.play()
+
+            // door section
+            var doorSection = $('#door-section')
+            var doors = document.querySelectorAll('.door')
+            doors.forEach(function (door, index) {
+                var direction = (index === 0) ? -1 : 1
+                door.style.transform = 'rotateY(' + (70 * direction) + 'deg)'
+            })
+
+            // set timeout music
+            setTimeout(function () {
+                // music play
+                music.play()
+                doorSection.css('transform', 'scale(6)')
+            }, 600)
+
+            // set timeout door section
+            setTimeout(function () {
+                doorSection.css('opacity', 0)
+                $('body').removeClass('overflow-hidden')
+                $('body').addClass('transition')
+                doorSection.css('display', 'none')
+                $('#content-section').show();
+            }, 2000)
+        }
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            document.querySelector('.background').appendChild(flower);
+            
+            for (let i = 0; i < 8; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                flower.appendChild(petal);
+            }
+            
+            const pistil = document.createElement('div');
+            pistil.classList.add('pistil');
+            flower.appendChild(pistil);
+            
+            flower.style.left = `${Math.random() * 100}vw`;
+            flower.style.top = `${Math.random() * 100}vh`;
+            
+            setTimeout(() => { flower.remove(); }, 10000);
+        }
+        setInterval(createFlower, 500);
+        
+        setTimeout(() => {
+            document.getElementById('birthdayContent').style.opacity = 1;
+            document.body.style.background = '#FFFAFB';
+        }, 2000);
+    </script>
+</body>
+</html>
