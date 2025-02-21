@@ -191,6 +191,11 @@
         @keyframes blink {
             50% { border-color: transparent; }
         }
+        .sparkle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="overflow-hidden">
@@ -211,6 +216,7 @@
       </div>
     </div>
     <div id="content-section">
+        <!-- <img src="img/sparkle.gif" alt="sparkle" class="sparkle"> -->
         <div class="background"></div>
         <div class="content" id="birthdayContent">
             <img src="foto.png" alt="Birthday Person">
@@ -301,7 +307,7 @@
         setTimeout(() => {
             document.getElementById('birthdayContent').style.opacity = 1;
             document.body.style.background = '#FFFAFB';
-        }, 2000);
+        }, 3000);
     </script>
 </body>
 </html>
