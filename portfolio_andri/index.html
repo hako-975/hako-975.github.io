@@ -1,779 +1,939 @@
-<!-- <?php 
-  if (isset($_POST['btnKirimPesan'])) 
-  {
-    $to = "andrifirmansaputra1@gmail.com";
-    $nama = htmlspecialchars($_POST['nama']);
-    $email = htmlspecialchars($_POST['email']);
-    $pesan = htmlspecialchars($_POST['pesan']);
-    mail($to, $nama, $email.'-'.$pesan);
-    echo "
-    <script>
-      alert('Terima Kasih atas tanggapan Anda!');
-    </script>
-    ";
-  }
- ?> -->
- 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A0D12">
+<meta name="description" content="Andri Firman Saputra — Fullstack Developer berbasis di Tangerang Selatan. Portofolio, keahlian, linimasa, dan kontak.">
+<title>Andri Firman Saputra — Fullstack Developer</title>
+<link rel="icon" href="https://hako-975.github.io/portfolio_andri/assets/img/about.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET & TOKENS ============ */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  <title>Portfolio - Andri Firman Saputra</title>
-  <meta content="Portfolio - Andri Firman Saputra" name="description">
-  <meta content="Portfolio Andri Firman Saputra" name="keywords">
+  :root {
+    --bg: #0A0D12;
+    --bg-panel: #12161E;
+    --bg-panel-2: #171C26;
+    --border: #232A36;
+    --border-soft: #161B24;
+    --text: #E8EDF2;
+    --text-muted: #8B95A7;
+    --text-dim: #586173;
+    --accent: #FFB454;
+    --status: #5EEAD4;
+    --container: 1120px;
+    --header-h: 64px;
+    --mx: 50%;
+    --my: 30%;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+  }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  ::selection { background: var(--accent); color: var(--bg); }
 
-  <!-- =======================================================
-  * Template Name: BizLand - v3.7.0
-  * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+  }
+
+  /* ============ BACKGROUND LAYERS ============ */
+  .bg-grid {
+    position: fixed; inset: 0; z-index: -2;
+    background-image:
+      linear-gradient(to right, var(--border-soft) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border-soft) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 100%);
+  }
+
+  .spotlight {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(560px circle at var(--mx) var(--my), rgba(255,180,84,0.08), transparent 70%);
+  }
+
+  /* ============ TOPBAR ============ */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--header-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(10,13,18,0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .logo {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .logo-dot { color: var(--accent); }
+
+  .nav { display: flex; gap: 36px; }
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-muted);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color .25s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--accent);
+    transition: width .25s ease;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--text); }
+  .nav-link.active::after, .nav-link:hover::after { width: 100%; }
+
+  .topbar-clock {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .menu-toggle {
+    display: none;
+    width: 32px; height: 32px;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+  }
+  .menu-toggle span {
+    display: block; width: 22px; height: 1px; background: var(--text);
+    transition: transform .3s ease, opacity .3s ease;
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: var(--header-h);
+    position: relative;
+  }
+
+  .status-line {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--status);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(94,234,212,0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(94,234,212,0); }
+    100% { box-shadow: 0 0 0 0 rgba(94,234,212,0); }
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1rem, 5vw, 3rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .hero-role {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2.4vw, 1.4rem);
+    color: var(--text-muted);
+    margin-top: 20px;
+    min-height: 1.6em;
+  }
+  .hero-role .prompt { color: var(--accent); margin-right: 8px; }
+  .cursor { animation: blink 1s steps(1) infinite; color: var(--accent); }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-bio {
+    max-width: 540px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin: 28px 0 36px;
+    font-size: 1rem;
+  }
+
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 15px 30px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: all .25s ease;
+  }
+  .btn-primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .btn-primary:hover { background: transparent; color: var(--accent); }
+  .btn-ghost { color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-lg { padding: 18px 40px; font-size: 14px; }
+
+  .scroll-indicator {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .scroll-indicator span { animation: bob 2s ease-in-out infinite; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  /* ============ FRAME CORNERS (signature) ============ */
+  .frame { position: relative; }
+  .corner {
+    position: absolute; width: 14px; height: 14px;
+    border: 0 solid var(--border);
+    transition: border-color .4s ease, width .4s ease, height .4s ease;
+    pointer-events: none;
+  }
+  .corner-tl { top: -1px; left: -1px; border-top-width: 1px; border-left-width: 1px; }
+  .corner-tr { top: -1px; right: -1px; border-top-width: 1px; border-right-width: 1px; }
+  .corner-bl { bottom: -1px; left: -1px; border-bottom-width: 1px; border-left-width: 1px; }
+  .corner-br { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px; }
+  .frame.is-visible .corner, .frame:hover .corner, .frame:focus-within .corner {
+    border-color: var(--accent); width: 22px; height: 22px;
+  }
+
+  /* ============ SCROLL REVEAL ============ */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ============ PANELS ============ */
+  .panel { padding: 80px 0; border-top: 1px solid var(--border); }
+
+  .panel h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 48px;
+  }
+
+  /* ============ ABOUT ============ */
+  .about-grid {
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: start;
+  }
+  .about-text p { color: var(--text-muted); line-height: 1.85; margin-bottom: 18px; }
+  .about-text p:first-of-type { color: var(--text); font-size: 1.05rem; }
+
+  .about-card {
+    padding: 36px; border: 1px solid var(--border); background: var(--bg-panel);
+  }
+  .avatar {
+    width: 88px; height: 88px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.9rem; color: var(--accent);
+    border: 1px solid var(--border);
+    background-image: repeating-linear-gradient(135deg, var(--bg-panel-2) 0 2px, transparent 2px 12px);
+    margin-bottom: 28px;
+  }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; }
+  .facts dt {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px;
+  }
+  .facts dd { font-family: var(--font-mono); font-size: 13px; color: var(--text); }
+
+  /* ============ STACK ============ */
+  .stack-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 1px; background: var(--border); border: 1px solid var(--border);
+  }
+  .stack-item {
+    background: var(--bg); padding: 28px 24px; transition: background .3s ease;
+  }
+  .stack-item:hover { background: var(--bg-panel); }
+  .stack-tag {
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .stack-item h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+  .stack-item p { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  /* ============ WORK ============ */
+  .work-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+  }
+  .work-card {
+    border: 1px solid var(--border); background: var(--bg-panel);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .work-thumb {
+    height: 180px; position: relative;
+    background-repeat: no-repeat;
+  }
+  .thumb-1 { background-image: linear-gradient(135deg, rgba(255,180,84,0.18), transparent 60%), repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 14px); background-color: #16202E; }
+  .thumb-2 { background-image: linear-gradient(135deg, rgba(94,234,212,0.16), transparent 60%), repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 14px); background-color: #1E1812; }
+  .thumb-3 { background-image: linear-gradient(135deg, rgba(255,255,255,0.12), transparent 60%), repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 14px); background-color: #131A1A; }
+  .work-thumb::after {
+    content: attr(data-frame);
+    position: absolute; bottom: 12px; right: 14px;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    color: rgba(232,237,242,0.5);
+  }
+  .work-info { padding: 28px; }
+  .work-info h3 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 8px; }
+  .work-info p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 18px; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tags span {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em;
+    padding: 4px 10px; border: 1px solid var(--border); color: var(--text-dim);
+  }
+  .work-link {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    color: var(--accent); text-decoration: none; text-transform: uppercase;
+  }
+  .work-link:hover { text-decoration: underline; }
+
+  /* ============ TIMELINE ============ */
+  .timeline-item {
+    display: grid; grid-template-columns: 110px 1fr; gap: 32px;
+    padding: 32px 0; border-top: 1px solid var(--border);
+  }
+  .timeline-item:first-child { border-top: none; padding-top: 0; }
+  .timeline-year { font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); }
+  .timeline-content h3 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 8px; font-weight: 600; }
+  .timeline-content p { color: var(--text-muted); line-height: 1.75; }
+
+  /* ============ CONTACT ============ */
+  .contact-inner {
+    text-align: center; padding: 90px 48px; border: 1px solid var(--border); background: var(--bg-panel);
+  }
+  .contact-inner .eyebrow { display: flex; justify-content: center; }
+  .contact-inner h2 { margin-bottom: 20px; }
+  .contact-inner > p { max-width: 480px; margin: 0 auto 40px; color: var(--text-muted); line-height: 1.8; }
+  .socials { display: flex; justify-content: center; gap: 20px; margin-top: 44px; }
+  .socials a {
+    width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border); color: var(--text-muted); transition: all .25s ease;
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em; text-decoration: none;
+  }
+  .socials a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ============ FOOTER ============ */
+  .footer { border-top: 1px solid var(--border); padding: 32px 0; }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); letter-spacing: 0.05em;
+  }
+  .to-top {
+    background: none; border: 1px solid var(--border); color: var(--text-muted);
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 10px 18px; cursor: pointer; transition: all .25s ease;
+  }
+  .to-top:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .container { padding: 0 24px; }
+    .panel { padding: 40px 0; }
+  }
+
+  @media (max-width: 768px) {
+    .topbar-clock { display: none; }
+    .menu-toggle { display: flex; }
+    .nav {
+      position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; height: calc(100vh - var(--header-h));
+      background: var(--bg); flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; transform: translateY(-100%); opacity: 0; pointer-events: none;
+      transition: transform .35s ease, opacity .35s ease;
+      border-top: 1px solid var(--border);
+    }
+    .nav.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-link { font-size: 16px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  @media (max-width: 520px) {
+    .contact-inner { padding: 60px 24px; }
+    .hero-cta { flex-direction: column; }
+    .btn { justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+  }
+  .work-thumb{
+    height:220px;
+    background-size:cover;
+    background-position:top center;
+    background-repeat:no-repeat;
+  }
+
+  .thumb-jepangcita{
+      background-image:url("assets/img/portfolio/jepangcita.png");
+  }
+
+  .thumb-yumiko{
+      background-image:url("assets/img/portfolio/petualanganyumiko.png");
+  }
+
+  .thumb-metalpipe{
+      background-image:url("assets/img/portfolio/metalpipe.jpg");
+  }
+
+  .thumb-movetheshape{
+      background-image:url("assets/img/portfolio/movetheshape.png");
+  }
+
+  .thumb-posyandu{
+      background-image:url("assets/img/portfolio/posyandu-anggrek.png");
+  }
+
+  .thumb-arsip{
+      background-image:url("assets/img/portfolio/arsip-bppt-b2tke.png");
+  }
+
+  .thumb-allmove{
+      background-image:url("assets/img/portfolio/allmove-indonesia.png");
+  }
+
+  .thumb-sertifikat{
+      background-image:url("assets/img/portfolio/manajemen-sertifikat-digital.png");
+  }
+
+  .thumb-osis{
+      background-image:url("assets/img/portfolio/pemilihan-ketua-osis-smk.jpg");
+  }
+
+  .thumb-laundry{
+      background-image:url("assets/img/portfolio/ujikom-smk-laundry.png");
+  }
+
+  .thumb-presma{
+      background-image:url("assets/img/portfolio/presma-stei-sebi.png");
+  }
+
+  .thumb-zonalapor{
+      background-image:url("assets/img/portfolio/zona-lapor.png");
+  }
+
+  .thumb-workout{
+      background-image:url("assets/img/portfolio/workout-planner.png");
+  }
+
+  .thumb-krl{
+      background-image:url("assets/img/portfolio/jadwal-krl-online.png");
+  }
+
+  .thumb-minimarket{
+      background-image:url("assets/img/portfolio/mini-market-manajemen-data-penjualan.png");
+  }
+  .work-card{
+    transition:.3s;
+  }
+
+  .work-card:hover{
+    transform:translateY(-8px);
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- ======= Top Bar ======= -->
-  <section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a target="_blank" href="mailto:andrifirmansaputra1@gmail.com">andrifirmansaputra1@gmail.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><a href="http://wa.me/6287808675313" target="_blank" target="_blank">+62 878 0867 5313</a></i>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="spotlight" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a href="" class="logo">AFS<span class="logo-dot">_</span></a>
+  <nav class="nav" id="nav">
+    <a href="#about" class="nav-link">Tentang</a>
+    <a href="#stack" class="nav-link">Keahlian</a>
+    <a href="#work" class="nav-link">Karya</a>
+    <a href="#timeline" class="nav-link">Perjalanan</a>
+    <a href="#contact" class="nav-link">Kontak</a>
+  </nav>
+  <div class="topbar-clock" id="clock">00:00:00 WIB</div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="container">
+      <p class="status-line"><span class="status-dot" aria-hidden="true"></span> Tersedia untuk Kolaborasi · Tangerang Selatan, ID</p>
+      <p class="eyebrow">// Halo, saya</p>
+      <h1 class="hero-name">Andri<br>Firman<br>Saputra</h1>
+      <p class="hero-role"><span class="prompt" aria-hidden="true">&gt;</span><span id="typed"></span><span class="cursor" aria-hidden="true">_</span></p>
+      <p class="hero-bio">Mahasiswa Informatika yang senang merancang antarmuka web yang rapi, cepat, dan terasa hidup. Saya membangun produk dari ide sampai jadi — dengan HTML, CSS, dan JavaScript sebagai alat utama.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary">Lihat Karya</a>
+        <a href="#contact" class="btn btn-ghost">Hubungi Saya</a>
       </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-        <a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
-        <a href="https://twitter.com/HausCoding" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="https://www.facebook.com/hako975/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/andri_firman_975/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/andri-firman-saputra-9b66901b1/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+    </div>
+    <div class="scroll-indicator">Scroll <span aria-hidden="true">↓</span></div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="panel reveal">
+    <div class="container">
+      <p class="eyebrow">// 01 — Tentang</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Tentang Saya</h2>
+          <p>Saya Andri, mahasiswa Informatika di Tangerang Selatan yang sedang menekuni Back-End development. Ketertarikan saya bermula dari rasa ingin tahu: bagaimana sebuah halaman web bisa terlihat indah sekaligus terasa nyaman saat digunakan.</p>
+          <p>Saat ini saya fokus memperdalam HTML, CSS, dan JavaScript modern, sambil bereksperimen dengan Android Stuido dan Unity untuk proyek-proyek pribadi. Bagi saya, detail kecil — transisi, jarak antar elemen, pemilihan tipografi — adalah yang membedakan produk biasa dari produk yang terasa matang.</p>
+          <p>Di luar coding, saya suka mengeksplorasi desain antarmuka futuristik dan membaca dokumentasi teknologi baru.</p>
+        </div>
+        <div class="about-card frame">
+          <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+          <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+          <div class="avatar" aria-hidden="true"><img src="https://hako-975.github.io/portfolio_andri/assets/img/about.jpg" alt=""></div>
+          <dl class="facts">
+            <div><dt>Lokasi</dt><dd>Tangerang Selatan, ID</dd></div>
+            <div><dt>Fokus</dt><dd>Back-End Dev</dd></div>
+            <div><dt>Status</dt><dd>Open to Work</dd></div>
+            <div><dt>Pendidikan</dt><dd>S1 Informatika</dd></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="index.html">Andri Firman Saputra</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-          <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-          <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Selamat Datang!</h1>
-      <h2>Portfolio Andri Firman Saputra</h2>
-      <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Mulai!</a>
-        <a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank" class="btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-      </div>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row justify-content-center">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="#featured-services">Rapih</a></h4>
-              <p class="description">Saya orang yang mengikuti aturan penulisan dan rapih dalam mengelola dokumen.</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="#featured-services">Cepat Tanggap</a></h4>
-              <p class="description">Saya orang yang cepat tanggap dalam menangani masalah secara kepala dingin dan detail.</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="#featured-services">Dinamis</a></h4>
-              <p class="description">Saya orang yang dinamis terutama dalam hal perkembangan zaman dan teknologi.</p>
-            </div>
-          </div>
-
+  <!-- ===== STACK ===== -->
+  <section id="stack" class="panel reveal">
+    <div class="container">
+      <p class="eyebrow">// 02 — Keahlian</p>
+      <h2>Tools &amp; Teknologi</h2>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <p class="stack-tag">Markup</p>
+          <h3>HTML5</h3>
+          <p>Struktur semantik &amp; aksesibel</p>
+        </div>
+        <div class="stack-item">
+          <p class="stack-tag">Styling</p>
+          <h3>CSS3</h3>
+          <p>Flexbox, Grid, animasi</p>
+        </div>
+        <div class="stack-item">
+          <p class="stack-tag">Logic</p>
+          <h3>JavaScript</h3>
+          <p>ES6+, DOM, async</p>
+        </div>
+        <div class="stack-item">
+          <p class="stack-tag">Backend Framework</p>
+          <h3>CodeIgniter 3</h3>
+          <p>PHP MVC ringan &amp; stabil</p>
         </div>
 
-      </div>
-    </section><!-- End Featured Services Section -->
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Tentang</h2>
-          <h3>Cari Tahu Lebih <span>Tentang Saya</span></h3>
-          <p>Saya seorang mahasiswa yang mendalami dunia pemrograman, terutama dalam dunia <i>Game Development</i>.</p>
+        <div class="stack-item">
+          <p class="stack-tag">Frontend Framework</p>
+          <h3>Bootstrap</h3>
+          <p>Komponen UI responsif &amp; cepat digunakan</p>
         </div>
-
-        <div class="row">
-          <div class="col-lg-5 offset-lg-1" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <h3>Game Developer</h3>
-            <p class="fst-italic">
-              Saya membuat permainan Android
-            </p>
-            <div class="row">
-              <div class="col">
-                <ul>
-                  <li>
-                    <i class="bx bx-store-alt"></i>
-                    <div>
-                      <h5>Play Store</h5>
-                      <p><a href="https://play.google.com/store/apps/dev?id=5605126651131495302" target="_blank">Kunjungi</a></p>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="bx bi-facebook"></i>
-                    <div>
-                      <h5>Facebook</h5>
-                      <p><a href="https://www.facebook.com/hako975" target="_blank">Kunjungi</a></p>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="bx bi-instagram"></i>
-                    <div>
-                      <h5>Instagram</h5>
-                      <p><a href="https://www.instagram.com/andri_firman_975" target="_blank">Kunjungi</a></p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="col">
-                <ul>
-                  <li>
-                    <i class="bx bi-linkedin"></i>
-                    <div>
-                      <h5>LinkedIn</h5>
-                      <p><a href="https://www.linkedin.com/in/andri-firman-saputra-9b66901b1/" target="_blank">Kunjungi</a></p>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="bx bi-twitter"></i>
-                    <div>
-                      <h5>Twitter</h5>
-                      <p><a href="https://twitter.com/HausCoding" target="_blank">Kunjungi</a></p>
-                    </div>
-                  </li>
-                  <li>
-                    <i class="bx bi-youtube"></i>
-                    <div>
-                      <h5>YouTube</h5>
-                      <p><a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank">Kunjungi</a></p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="stack-item">
+          <p class="stack-tag">Versioning</p>
+          <h3>Git &amp; GitHub</h3>
+          <p>Kolaborasi &amp; rilis</p>
         </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">HTML <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">CSS <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">JavaScript <i class="val">40%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill">PHP <i class="val">65%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">C# <i class="val">65%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Photoshop <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
+        <div class="stack-item">
+          <p class="stack-tag">Desain</p>
+          <h3>Figma</h3>
+          <p>Wireframe &amp; prototipe</p>
         </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <!-- <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row justify-content-center">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Klien Senang</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Proyek</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section> --><!-- End Counts Section -->
-
-    <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="row justify-content-center">
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Clients Section -->
-
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <h3>Cek <span>Portfolio Saya</span></h3>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/petualanganyumiko.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Petualangan Yumiko 3D</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/petualanganyumiko.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Petualangan Yumiko 3D"><i class="bx bx-search-alt-2"></i></a>
-              <a href="https://play.google.com/store/apps/details?id=com.HakoLab.YumikoAdventure3D" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/movetheshape.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Move the Shape</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/movetheshape.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Move the Shape"><i class="bx bx-search-alt-2"></i></a>
-              <a href="https://play.google.com/store/apps/details?id=com.HakoLab.MovetheShape" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/metalpipe.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Metal Pipe</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/metalpipe.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Metal Pipe"><i class="bx bx-search-alt-2"></i></a>
-              <a href="https://play.google.com/store/apps/details?id=com.HakoLab.MetalPipe" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/posyandu-anggrek.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Posyandu Anggrek - Antrian</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/posyandu-anggrek.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Posyandu Anggrek - Antrian"><i class="bx bx-search-alt-2"></i></a>
-              <a href="https://play.google.com/store/apps/details?id=com.hakolab.posyandu" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/jepangcita.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>JepangCita: Game Simulasi 3D</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/jepangcita.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title=""><i class="bx bx-search-alt-2"></i></a>
-              <a href="https://play.google.com/store/apps/details?id=com.HakoLab.JepangCita" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/arsip-bppt-b2tke.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Arsip BPPT B2TKE</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/arsip-bppt-b2tke.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Arsip BPPT B2TKE"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/pemilihan-ketua-osis-smk.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Pemilihan Ketua OSIS SMK Al-Amanah</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/pemilihan-ketua-osis-smk.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Pemilihan Ketua OSIS SMK Al-Amanah Kota Tangerang Selatan"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/ujikom-smk-laundry.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Laundry</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/ujikom-smk-laundry.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen Laundry UJIKOM SMK"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/presma-stei-sebi.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Presma STEI SEBI</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/presma-stei-sebi.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Pemilihan Presiden Mahasiswa di STEI SEBI"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/aplikasi_penjualan_dimsum.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Penjualan Dimsum</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/aplikasi_penjualan_dimsum.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen Penjualan Dimsum"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/uang_kas.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Uang Kas</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/uang_kas.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen Uang Kas"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/zona-lapor.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Zona Lapor Pengaduan Masyarakat</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/zona-lapor.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Zona Lapor Aplikasi Manajemen Pengaduan Masyarakat"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/markas-pancong-uj.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Markas Pancong UJ</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/markas-pancong-uj.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen dan Pemesanan Online di Markas Pancong UJ"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/cookies-move-on.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Cookies Move On</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/cookies-move-on.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen dan Landing Page di Cookies Move On"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/quiz.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Quiz</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/quiz.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Quiz seperti Kahoot"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/penjualan-motor.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Penjualan Motor</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/penjualan-motor.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen Penjualan Motor"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/manajemen-sertifikat-digital.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Manajemen Sertifikat Digital</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/manajemen-sertifikat-digital.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen/Arsip Sertifikat Digital"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/daftar-resep-masakan.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Daftar Resep Masakan</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/daftar-resep-masakan.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Daftar Resep Masakan"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/jadwal-tamu.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Jadwal Tamu</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/jadwal-tamu.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Jadwal Tamu"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/workout-planner.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Workout Planner</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/workout-planner.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Workout Planner"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/manajemen-acara.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Manajemen Acara</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/manajemen-acara.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Manajemen Acara"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/reward-punishment.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Reward Punishment</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/reward-punishment.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Reward Punishment"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/workout-planner.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Workout Planner</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/workout-planner.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Workout Planner"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/jadwal-krl-online.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Jadwal KRL Online</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/jadwal-krl-online.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Jadwal KRL Online"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/doxscien.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Doxscien</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/doxscien.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Doxscien adalah layanan informasi penyakit dan obat serta menyediakan informasi dokter dan pendaftaran konsultasi online."><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/weddingyuliadit.jpeg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Undangan Digital Yuli dan Adit</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/weddingyuliadit.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Wedding Yuli dan Adit"><i class="bx bx-search-alt-2"></i></a>
-              <a href="https://hako-975.github.io/wedding-yuli-dan-adit/" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/allmove-indonesia.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>ALLMOVE INDONESIA</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/allmove-indonesia.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="CV. Allvindo Movers adalah Perusahaan Profesional yang melayani: Jasa Pindahan, Jasa Pengepakan, Jasa Penyimpanan dan Jasa Pengiriman barang (Moving, Packaging, Storage and Cargo Service)."><i class="bx bx-search-alt-2"></i></a>
-              <a href="https://allmoveindonesia.com/" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/mini-market-manajemen-data-penjualan.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Mini Market Manajemen Data Penjualan</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/mini-market-manajemen-data-penjualan.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Aplikasi Mini Market Manajemen Data Penjualan"><i class="bx bx-search-alt-2"></i></a>
-              <!-- <a href="https://allmoveindonesia.com/" target="_blank" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Kontak</h2>
-          <h3><span>Kontak Saya</span></h3>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Alamat Saya</h3>
-              <p>Jl. AMD Babakan Pocis No. 88 RT04/02, Bakti Jaya, Setu, Tangerang Selatan, Banten, Jawa Barat, Indonesia. Kode Pos: 15315</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email</h3>
-              <p><a href="mailto:andrifirmansaputra1@gmail.com" target="_blank">andrifirmansaputra1@gmail.com</a></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>WhatsApp</h3>
-              <p><a href="http://wa.me/6287808675313" target="_blank" target="_blank">+62 878 0867 5313</a></p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-6 ">
-            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7930.636543974224!2d106.7021518!3d-6.352826999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5984644c4c7%3A0xe8408c0143713c8d!2zNsKwMjEnMTAuMSJTIDEwNsKwNDInMDcuMCJF!5e0!3m2!1sid!2sid!4v1642155213855!5m2!1sid!2sid" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
-          </div>
-
-          <div class="col-lg-6">
-            <form action="https://formsubmit.co/andrifirmansaputra1@gmail.com" method="post">
-              <div class="mb-3">
-                <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email">
-              </div>
-              <div class="mb-3">
-                <label for="pesan" class="form-label">Isi Pesan</label>
-                <textarea class="form-control" name="pesan" id="pesan" rows="3" placeholder="Masukkan Isi Pesan"></textarea>
-              </div>
-              <div class="mb-3">
-                <button type="submit" name="btnKirimPesan" class="btn btn-primary">Kirim Pesan!</button>
-              </div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row justify-content-between">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Andri Firman Saputra</h3>
-            <p>
-              Jl. AMD Babakan Pocis No. 88 RT04/02, Bakti Jaya, Setu, Tangerang Selatan, Banten, Jawa Barat, Indonesia. <br>
-              Kode Pos: 15315 <br> 
-              <strong>WhatsApp:</strong> <a href="http://wa.me/6287808675313" target="_blank" target="_blank">+62 878 0867 5313</a><br>
-              <strong>Email:</strong> <a href="mailto:andrifirmansaputra1@gmail.com" target="_blank">andrifirmansaputra1@gmail.com</a><br>
-            </p>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Sosial Media</h4>
-            <div class="social-links mt-3">
-              <a href="https://www.youtube.com/channel/UC15MaXx76hduYPEQ59r0kSQ" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
-              <a href="https://twitter.com/HausCoding" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="https://www.facebook.com/hako975/" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="https://www.instagram.com/andri_firman_975/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/andri-firman-saputra-9b66901b1/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
-
+        <div class="stack-item">
+          <p class="stack-tag">Responsif</p>
+          <h3>Mobile-First</h3>
+          <p>Lintas perangkat</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="container py-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Andri Firman Saputra</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  <!-- ===== WORK ===== -->
+  <section id="work" class="panel reveal">
+    <div class="container">
+      <p class="eyebrow">// 03 — Karya</p>
+      <h2>Portfolio Archive</h2>
+
+      <div class="work-grid">
+
+        <!-- GAME -->
+        <article class="work-card frame">
+          <div class="work-thumb thumb-jepangcita" data-frame="APP"></div>
+          <div class="work-info">
+            <h3>JepangCita: Game Simulasi 3D</h3>
+            <p>Game simulasi kehidupan bertema Jepang yang dikembangkan menggunakan Unity.</p>
+            <div class="tags"><span>Unity</span><span>C#</span><span>Android</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-yumiko" data-frame="APP"></div>
+          <div class="work-info">
+            <h3>Petualangan Yumiko 3D</h3>
+            <p>Game petualangan 3D Android dengan eksplorasi dunia dan berbagai tantangan.</p>
+            <div class="tags"><span>Unity</span><span>C#</span><span>Android</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-metalpipe" data-frame="APP"></div>
+          <div class="work-info">
+            <h3>Metal Pipe</h3>
+            <p>Game casual Android yang berhasil memperoleh ribuan unduhan di Google Play.</p>
+            <div class="tags"><span>Unity</span><span>C#</span><span>Google Play</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-movetheshape" data-frame="APP"></div>
+          <div class="work-info">
+            <h3>Move The Shape</h3>
+            <p>Game puzzle sederhana dengan gameplay cepat dan ringan.</p>
+            <div class="tags"><span>Unity</span><span>C#</span><span>Mobile</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-posyandu" data-frame="APP"></div>
+          <div class="work-info">
+            <h3>Posyandu Anggrek - Antrian</h3>
+            <p>Sistem antrian digital untuk mempermudah pelayanan Posyandu.</p>
+            <div class="tags"><span>Android</span><span>Java</span><span>Firebase</span></div>
+          </div>
+        </article>
+
+        <!-- WEB -->
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-arsip" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Arsip BPPT B2TKE</h3>
+            <p>Sistem arsip digital berbasis web untuk pengelolaan dokumen.</p>
+            <div class="tags"><span>CodeIgniter 3</span><span>PHP</span><span>MySQL</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-allmove" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>ALLMOVE INDONESIA</h3>
+            <p>Website company profile dan sistem informasi perusahaan.</p>
+            <div class="tags"><span>PHP</span><span>Bootstrap</span><span>MySQL</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-sertifikat" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Manajemen Sertifikat Digital</h3>
+            <p>Sistem pengelolaan sertifikat peserta secara online.</p>
+            <div class="tags"><span>CodeIgniter</span><span>PHP</span><span>MySQL</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-osis" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Pemilihan Ketua OSIS</h3>
+            <p>Sistem e-voting berbasis web untuk pemilihan ketua OSIS.</p>
+            <div class="tags"><span>PHP</span><span>Bootstrap</span><span>MySQL</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-laundry" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Laundry Management</h3>
+            <p>Sistem manajemen transaksi laundry dan laporan.</p>
+            <div class="tags"><span>PHP</span><span>MySQL</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-presma" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Presma STEI SEBI</h3>
+            <p>Sistem informasi pemilihan presiden mahasiswa.</p>
+            <div class="tags"><span>CodeIgniter</span><span>PHP</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-zonalapor" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Zona Lapor</h3>
+            <p>Portal pengaduan masyarakat berbasis web.</p>
+            <div class="tags"><span>PHP</span><span>Bootstrap</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-workout" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Workout Planner</h3>
+            <p>Aplikasi web untuk menyusun jadwal latihan harian.</p>
+            <div class="tags"><span>JavaScript</span><span>LocalStorage</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-krl" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Jadwal KRL Online</h3>
+            <p>Pencarian jadwal perjalanan KRL berbasis web.</p>
+            <div class="tags"><span>API</span><span>JavaScript</span></div>
+          </div>
+        </article>
+
+        <article class="work-card frame">
+          <div class="work-thumb thumb-minimarket" data-frame="WEB"></div>
+          <div class="work-info">
+            <h3>Mini Market Management</h3>
+            <p>Sistem manajemen data penjualan dan stok barang.</p>
+            <div class="tags"><span>PHP</span><span>MySQL</span></div>
+          </div>
+        </article>
+
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </section>
 
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- ===== TIMELINE ===== -->
+  <section id="timeline" class="panel reveal">
+    <div class="container">
+      <p class="eyebrow">// 04 — Perjalanan</p>
+      <h2>Linimasa</h2>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+      <div class="timeline">
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+        <div class="timeline-item">
+          <div class="timeline-year">2021</div>
+          <div class="timeline-content">
+            <h3>Mulai Dunia Game & Android</h3>
+            <p>Mulai membuat game sederhana seperti Metal Pipe dan belajar Unity + C#.</p>
+          </div>
+        </div>
 
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <h3>Pengembangan Aplikasi Edukasi</h3>
+            <p>Membangun aplikasi Cerdas Cermat Muslim dan sistem pembelajaran interaktif.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <h3>Web Development & Sistem CI3</h3>
+            <p>Mengerjakan sistem e-learning berbasis CodeIgniter 3 dengan multi-mata pelajaran.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2025 - NOW</div>
+          <div class="timeline-content">
+            <h3>Fokus Portofolio & Produk Digital</h3>
+            <p>Mengembangkan aplikasi, game, dan freelance project.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="panel reveal">
+    <div class="container">
+      <div class="contact-inner frame">
+        <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+        <p class="eyebrow">// 05 — Kontak</p>
+        <h2>Mari Berkolaborasi</h2>
+        <p>Punya proyek, ide, atau sekadar ingin berdiskusi soal Back-End development? Kotak masuk saya selalu terbuka.</p>
+        <a href="mailto:andrifirmansaputra1@gmail.com" class="btn btn-primary btn-lg">andrifirmansaputra1@gmail.com</a>
+        <div class="socials">
+          <a href="https://github.com/hako-975" aria-label="GitHub" target="_blank">GH</a>
+          <a href="https://www.linkedin.com/in/andri-firman-saputra/" aria-label="LinkedIn" target="_blank">LI</a>
+          <a href="https://instagram.com/andri_firman_975" aria-label="Instagram" target="_blank">IG</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>© 2026 Andri Firman Saputra — Dibangun dengan HTML, CSS &amp; JavaScript.</p>
+    <button id="toTop" class="to-top">↑ Kembali ke Atas</button>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Mobile menu */
+  const menuToggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+  menuToggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuToggle.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuToggle.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* Scroll reveal + frame corner highlight */
+  const revealTargets = document.querySelectorAll('.reveal, .frame');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach((el) => io.observe(el));
+  } else {
+    revealTargets.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  /* Active nav link based on section in view */
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  if ('IntersectionObserver' in window) {
+    const navIO = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    sections.forEach((sec) => navIO.observe(sec));
+  }
+
+  /* Typing animation for role line */
+  const roles = ['Fullstack Developer', 'UI/UX Enthusiast', 'Pemecah Masalah', 'Pembelajar Seumur Hidup'];
+  const typedEl = document.getElementById('typed');
+  if (reduceMotion) {
+    typedEl.textContent = roles[0];
+  } else {
+    let roleIndex = 0, charIndex = 0, deleting = false;
+    const tick = () => {
+      const word = roles[roleIndex];
+      if (!deleting) {
+        charIndex++;
+        typedEl.textContent = word.slice(0, charIndex);
+        if (charIndex === word.length) {
+          deleting = true;
+          setTimeout(tick, 1800);
+          return;
+        }
+      } else {
+        charIndex--;
+        typedEl.textContent = word.slice(0, charIndex);
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      setTimeout(tick, deleting ? 35 : 75);
+    };
+    tick();
+  }
+
+  /* Spotlight follows cursor (pointer devices only) */
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+      document.documentElement.style.setProperty('--my', e.clientY + 'px');
+    });
+  }
+
+  /* Live clock (WIB) */
+  const clockEl = document.getElementById('clock');
+  const updateClock = () => {
+    const time = new Date().toLocaleTimeString('en-GB', {
+      timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+    clockEl.textContent = time + ' WIB';
+  };
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  /* Back to top */
+  document.getElementById('toTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+})();
+</script>
 </body>
-
 </html>
